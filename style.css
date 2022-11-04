@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "Pixo Reto Regular";
+    src: url("fonts/PixoReto-Regular.eot?") format("eot"), url("fonts/PixoReto-Regular.woff") format("woff"), url("fonts/PixoReto-Regular.ttf") format("truetype"), url("fonts/PixoReto-Regular.svg#PixoReto-Regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    background-color: #1E1E1E;
+    color: white;
+    font-family: Calibri;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 20px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #F01F35;
+    border-radius: 20px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #1E1E1E;
+    border-radius: 20px;
+}
+
+/* NavBar */
+.navbar .container {
+    padding: 2.5px 7% 5px 2%;
+    background-color: #F01F35;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 120px;
+}
+
+.navbar .container .content .items {
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    list-style: none;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+/* Banner */
+
+.banner {
+    height: 100vh;
+    background-image: url(img/banner2.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* History */
+
+.history {
+    padding: 4% 0;
+}
+
+.history .container {
+    padding: 3% 1%;
+    background-color: #333333;
+}
+
+/* Part1 */
+.part1 {
+    display: flex;
+}
+
+.part1 .imgHist1 {
+    width: 50%;
+}
+
+.part1 .textHist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 0 0 1%;
+}
+
+.part1 .textHist .title {
+    font-family: "Pixo Reto Regular";
+    font-size: 60px;
+    margin: 0 0 1% 0;
+}
+
+.part1 .textHist span {
+    font-size: 30px;
+    text-align: center;
+}
