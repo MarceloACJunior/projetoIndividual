@@ -1,3 +1,4 @@
+DROP DATABASE cbjr;
 CREATE DATABASE cbjr;
 USE cbjr;
 
@@ -15,4 +16,6 @@ CREATE TABLE pontuacao (
 			PRIMARY KEY (idPontuacao, fkUsuario),
 	pontuacao INT,
     perPont FLOAT
-);	
+);
+
+select * from usuario;

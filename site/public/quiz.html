@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/funcoes.js"></script>
+    <link rel="stylesheet" href="styles/quiz.css">
+    <title>Login</title>
+</head>
+<body scroll="no" style="overflow: hidden">
+    <div class="navbar">
+        <div class="container">
+            <a href="index.html"><img class="logo" src="img/cbjlogo2.png" alt="CBJR Logo"></a>
+            <div class="content">
+                <ul class="items">
+                    <a href="index.html#history"><li>História</li></a>
+                    <a href="index.html#musics"><li>Músicas</li></a>
+                    <a href="index.html#curiosities"><li>Curiosidades</li></a>
+                    <!-- <li id="sessionName"></li> -->
+                    <img style="height: 25px; cursor: pointer;" src="img/exit.png" alt="logout" onclick="limparSessao()">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="quiz">
+        <div class="container">
+            <span class="title">quiz cjbr</span>
+            <div class="content">
+                <div class="question" id="question1">
+                    <span class="title">1- qual a primeira formação da</span>
+                    <span class="title">banda charlie brown jr?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options" value="Chorão, Champignon, Marcão, Thiago e Graveto">
+                            <span class="text">a) Chorão, Champignon, Marcão, Thiago e Graveto</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options" value="Chorão, Champignon, Heitor, Thiago e Pelado">
+                            <span class="text">b) Chorão, Champignon, Heitor, Thiago e Pelado</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options" value="Chorão, Champignon, Marcão, Thiago e Pelado">
+                            <span class="text">c) Chorão, Champignon, Marcão, Thiago e Pelado</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options" value="Chorão, Champignon, Heitor, Thiago e Graveto">
+                            <span class="text">d) Chorão, Champignon, Heitor, Thiago e Graveto</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question2" style="display: none;">
+                    <span class="title">2- qual o primeiro álbum de estúdio</span>
+                    <span class="title">do charlie brown jr?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options2" value="Tamo Aí na Atividade">
+                            <span class="text">a) Tamo Aí na Atividade</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options2" value="Transpiração Contínua Prolongada">
+                            <span class="text">b) Transpiração Contínua Prolongada</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options2" value="Bocas Ordinárias">
+                            <span class="text">c) Bocas Ordinárias</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options2" value="Imunidade Musical">
+                            <span class="text">d) Imunidade Musical</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question3" style="display: none;">
+                    <span class="title">3- qual a música mais reproduzida do</span>
+                    <span class="title">charlie brown jr no spotify?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options3" value="Ela vai voltar">
+                            <span class="text">d) Ela vai voltar</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options3" value="Dias De Luta, Dias De Glória">
+                            <span class="text">a) Dias De Luta, Dias De Glória</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options3" value="Zóio de Lula">
+                            <span class="text">c) Zóio de Lula</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options3" value="Só os Loucos Sabem">
+                            <span class="text">b) Só os Loucos Sabem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question4" style="display: none;">
+                    <span class="title">4- do que o chorão trampava</span>
+                    <span class="title">antes de ficar famoso?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options4" value="Garçom">
+                            <span class="text">a) Garçom</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options4" value="Corretor">
+                            <span class="text">b) Corretor</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options4" value="Motorista">
+                            <span class="text">c) Motorista</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options4" value="Repositor">
+                            <span class="text">d) Repositor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question5" style="display: none;">
+                    <span class="title">5- com quantos anos champignon </span>
+                    <span class="title">começou a tocar com o chorão?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options5" value="15 anos">
+                            <span class="text">a) 15 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options5" value="14 anos">
+                            <span class="text">b) 14 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options5" value="13 anos">
+                            <span class="text">c) 13 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options5" value="12 anos">
+                            <span class="text">d) 12 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question6" style="display: none;">
+                    <span class="title">6- quantos anos tinham chorão e champignon</span>
+                    <span class="title">quando morreram, respectivamente?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options6" value="41, 34 anos">
+                            <span class="text">a) 41, 34 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options6" value="40, 33 anos">
+                            <span class="text">b) 40, 33 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options6" value="42, 35 anos">
+                            <span class="text">c) 42, 35 anos</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options6" value="39, 32 anos">
+                            <span class="text">d) 39, 32 anos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="question" id="question7" style="display: none;">
+                    <span class="title">7- quantos ouvintes mensais</span>
+                    <span class="title">charlie brown jr tem, aproximadamente?</span>
+                    <hr style="width: 100%; margin: 0;" color="#1E1E1E">
+                    <div class="answers">
+                        <div class="option">
+                            <input type="radio" name="options7" value="2 milhões">
+                            <span class="text">a) 2 milhões</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options7" value="5 milhões">
+                            <span class="text">b) 5 milhões</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options7" value="3 milhões">
+                            <span class="text">c) 3 milhões</span>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="options7" value="4 milhões">
+                            <span class="text">d) 4 milhões</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <button id="prev" onclick="PrevQuestion()">Questão Anterior</button>
+                    <button id="next" onclick="NextQuestion()">Próxima Questão</button>
+                    <button id="finish" onclick="FinishQuiz()">Finalizar Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.getElementById('prev').style.display = 'none';
+    document.getElementById('finish').style.display = 'none';
+    let next = 0;
+    let prev = 0;
+    let countAnswers = 0;
+    let answers = [];
+    let correctAnswers = ["Chorão, Champignon, Marcão, Thiago e Pelado", "Transpiração Contínua Prolongada", "Só os Loucos Sabem", "Corretor", "12 anos", "42, 35 anos", "4 milhões"];
+
+    function PrevQuestion() {
+        prev--;
+        next = prev
+        if (prev == 5) {
+            question7.style.display = "none";
+            question6.style.display = "flex";
+            document.getElementById('next').style.display = 'block';
+            document.getElementById('finish').style.display = 'none';
+        } else if (prev == 4) {
+            question6.style.display = "none";
+            question5.style.display = "flex";
+        } else if (prev == 3) {
+            question5.style.display = "none";
+            question4.style.display = "flex";
+        } else if (prev == 2) {
+            question4.style.display = "none";
+            question3.style.display = "flex";
+        } else if (prev == 1) {
+            question3.style.display = "none";
+            question2.style.display = "flex";
+        } else if (prev == 0) {
+            question2.style.display = "none";
+            question1.style.display = "flex";
+            document.getElementById('prev').style.display = 'none';
+        }
+    }
+
+    function NextQuestion() {
+        next++;
+        prev = next
+        if (next == 1) {
+            question1.style.display = "none";
+            question2.style.display = "flex";
+            document.getElementById('prev').style.display = 'block';
+        } else if (next == 2) {
+            question2.style.display = "none";
+            question3.style.display = "flex";
+        } else if (next == 3) {
+            question3.style.display = "none";
+            question4.style.display = "flex";
+        } else if (next == 4) {
+            question4.style.display = "none";
+            question5.style.display = "flex";
+        } else if (next == 5) {
+            question5.style.display = "none";
+            question6.style.display = "flex";
+        } else if (next == 6) {
+            question6.style.display = "none";
+            question7.style.display = "flex";
+            document.getElementById('next').style.display = 'none';
+            document.getElementById('finish').style.display = 'block';
+        }
+    }
+
+    function FinishQuiz() {
+        var radios = document.getElementsByTagName('input');
+
+        for (let index = 0; index < radios.length; index++) {
+            if (radios[index].checked == true) {
+                if (radios[index].value == correctAnswers[index]) {
+                    countAnswers++
+                    console.log(countAnswers);
+                } else {
+                    console.log('Está errado')
+                }
+            }
+        }
+    }
+</script>
