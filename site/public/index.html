@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/funcoes.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <title>Charlie Brown Jr.</title>
 </head>
@@ -14,7 +15,7 @@
         <div class="container">
             <a href="index.html"><img class="logo" src="img/cbjlogo2.png" alt="CBJR Logo"></a>
             <div class="content">
-                <ul class="items">
+                <ul class="items" id="items">
                     <a href="index.html#history">
                         <li>História</li>
                     </a>
@@ -58,7 +59,7 @@
             </div>
             <div class="part two">
                 <div class="textHist">
-                    <span class="title">os integrantes</span>
+                    <span class="title">primeira formacão</span>
                     <span class="text">
                         Em 1990, quando o baixista saiu, Champignon, com apenas 12 anos de idade, foi apresentado a
                         Chorão por músicos conhecidos que frequentavam o mesmo estúdio do cantor, na cidade de São
@@ -137,7 +138,7 @@
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"></iframe>
                 <div class="lyrics">
-                    <span>O quanto é precioso o nosso tempo</span>
+                    <span>Agora sei... O quanto é precioso o nosso tempo</span>
                     <span>A gente tem que dar valor, certas coisas não tem preço</span>
                     <span>O fato é que a gente tem que se preservar</span>
                     <span>Viver intensamente com a cabeça no lugar</span>
@@ -210,9 +211,9 @@
                     <span class="text">
                         Até arrepia falar do cara, é foda mano. Ele passava uma coisa pra mim que é o seguinte...
                         Exatamente isso que eu falei da liberdade, que a gente tem que ter de fazer as coisas. Ele era
-                        um cara que estaria hoje fazendo hoje, uma novela, um filme, programa de TV, qualquer porra.
+                        um cara que estaria fazendo hoje, uma novela, um filme, programa de TV, qualquer porra.
                         Porque ele era ele, ele era aquilo. Ele era aço, uma coisa impenetrável. O cara era bola de
-                        zugue, uísque barato, mordida de cobra e veneno pra rato, saca? Esse pra mim era o Sabotage. E
+                        snooker, uísque barato, mordida de cobra e veneno pra rato, saca? Esse pra mim era o Sabotage. E
                         dosado de muita alegria, porque ele era um cara muito feliz, saca? E que passava muita
                         experiencia.
                     </span>
@@ -232,23 +233,27 @@
                     </span>
                 </div>
             </div>
-            <!-- <div class="part three">
-                <div class="textHist">
-                    <span class="title">Mv Bill sobre Chorão</span>
-                    <span class="text">
-                        Tadeu Patolla, cunhado de uma namorada do Champignon apresentou a fita demo da banda a um amigo, presidente da Virgin Records no Brasil e produtor dos Mamonas Assassinas. Bonadio gostou do som da banda e os contratou. Nasce então o álbum Transpiração Contínua Prolongada, produzido por Tadeu Patolla e Rick Bonadio com o selo da Virgin. Lançado em 1997, o disco vendeu por volta de 500 mil cópias, e foi bem recebido pelas rádios, que executaram faixas como "O Coro Vai Comê!", "Proibida pra Mim (Grazon)", "Tudo que Ela Gosta de Escutar" e "Quinta-Feira".
-                    </span>
-                </div>
-                <img class= "imgHist1" src="https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2022/02/Chorao-e-MV-Bill.jpg" alt="">
-            </div> -->
         </div>
     </div>
     <div class="footer" id="footer">
         <div class="container">
             <span class="title">viva para ser feliz e não viva em vão </span>
-            <hr width="100%" color="#1E1E1E">
+            <hr width="100%" color="#1E1E1E" style="margin-top: 0;">
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+    if (sessionStorage.ID_USUARIO != null) {
+        items.innerHTML = `
+            <a href="index.html#history"><li>História</li></a>
+            <a href="index.html#musics"><li>Músicas</li></a>
+            <a href="index.html#curiosities"><li>Curiosidades</li></a>
+            <a href="quiz.html"><li>Quiz</li></a>
+            <a href="scores.html"><li>Pontuação Geral</li></a>
+            <img style="height: 25px; cursor: pointer;" src="img/exit.png" alt="logout" onclick="limparSessao()">
+        `
+    }
+</script>

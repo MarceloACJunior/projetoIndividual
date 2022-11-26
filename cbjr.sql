@@ -10,12 +10,13 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE pontuacao (
-	idPontuacao INT,
-    fkUsuario INT, CONSTRAINT fkIdUsuario 
-		FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-			PRIMARY KEY (idPontuacao, fkUsuario),
+	idPontuacao INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT, FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
 	pontuacao INT,
     perPont FLOAT
 );
 
 select * from usuario;
+select * from pontuacao;
+
+SELECT nomeUsuario, pontuacao, perPont FROM PONTUACAO JOIN usuario ON fkUsuario = idUsuario ORDER BY perPont;

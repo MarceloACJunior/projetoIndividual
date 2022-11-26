@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,28 @@
     <link rel="stylesheet" href="styles/register&login.css">
     <title>Login</title>
 </head>
+
 <body scroll="no" style="overflow: hidden">
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <div class="container">
             <a href="index.html"><img class="logo" src="img/cbjlogo2.png" alt="CBJR Logo"></a>
             <div class="content">
                 <ul class="items">
-                    <a href="index.html#history"><li>História</li></a>
-                    <a href="index.html#musics"><li>Músicas</li></a>
-                    <a href="index.html#curiosities"><li>Curiosidades</li></a>
-                    <a href="login.html"><li>Login</li></a>
-                    <a href="register.html"><li>Registro</li></a>
+                    <a href="index.html#history">
+                        <li>História</li>
+                    </a>
+                    <a href="index.html#musics">
+                        <li>Músicas</li>
+                    </a>
+                    <a href="index.html#curiosities">
+                        <li>Curiosidades</li>
+                    </a>
+                    <a href="login.html">
+                        <li>Login</li>
+                    </a>
+                    <a href="register.html">
+                        <li>Registro</li>
+                    </a>
                 </ul>
             </div>
         </div>
@@ -36,9 +48,14 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
+    if (sessionStorage.ID_USUARIO != null) {
+        window.location = "index.html";
+    }
+
     function entrar() {
         // aguardar();
 
@@ -46,65 +63,49 @@
         var senhaVar = inpSenha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
+            alert('Preencha todos os campos')
             return false;
         } else {
-            // setInterval(sumirMensagem, 5000)
-        }
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+
+                        setTimeout(function () {
+                            window.location = "quiz.html";
+                        }, 1000); // apenas para exibir o loading
+                    });
+                } else {
+                    alert("Email ou senha incorretos");
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log(erro);
             })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
-
-                    setTimeout(function () {
-                        window.location = "quiz.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    // finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+            return false;
+        }
     }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
-
 </script>

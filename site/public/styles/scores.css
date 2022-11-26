@@ -16,6 +16,22 @@ body {
     font-family: Calibri;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #F01F35;
+    border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+    border-radius: 20px;
+}
+
 h1 {
     margin: 0;
 }
@@ -28,7 +44,7 @@ h1 {
 
 .text {
     font-size: 17px;
-    text-align: justify;
+    text-align: center;
     font-weight: 400;
     color: white;
 }
@@ -62,16 +78,15 @@ a {
     color: inherit;
 }
 
-
-/* QUIZ */
-.quiz {
-    margin-top: 13vh;
+/* Scores */
+.scores {
+    margin-top: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.quiz .container {
+.scores .container {
     padding: 2vh 2vw 4vh 2vw;
     display: flex;
     flex-direction: column;
@@ -82,39 +97,34 @@ a {
     box-shadow: 0px 0px 15px brown;
 }
 
-.quiz .content{
-    padding: 8vh 4vw;
+.scores .content {
+    width: 70vw;
+    height: 50vh;
+    padding: 4vh 0vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: brown;
     border-radius: 15px;
     box-shadow: inset 0px 0px 5px black;
+    overflow-y: scroll;
 }
 
-.quiz .question {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.quiz .option {
-    margin: 0.5vh 0 0vh 0;
-}
-
-.quiz .answers {
-    margin: 2vh 0 2vh 0;
-}
-
-button {
+.scores th {
+    font-size: 2em;
+    font-weight: 400;
     color: white;
-    padding: 1vh 1vw;
-    margin: 0 2vw;
-    font-size: 17px;
-    align-self: center;
-    box-shadow: 0px 0px 5px black;
-    border-radius: 5px;
-    background-color: #333333;
-    border: none;
-    cursor: pointer;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 2px solid black;
+}
+
+td {
+    padding: 0.5vh;
 }

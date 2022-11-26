@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/funcoes.js"></script>
-    <link rel="stylesheet" href="styles/quiz.css">
+    <!-- Sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <!-- Sweet alert -->
+    <link rel="stylesheet" href="styles/quiz.css" onload="validarSessao()">
     <title>Login</title>
 </head>
+
 <body scroll="no" style="overflow: hidden">
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <div class="container">
             <a href="index.html"><img class="logo" src="img/cbjlogo2.png" alt="CBJR Logo"></a>
             <div class="content">
                 <ul class="items">
-                    <a href="index.html#history"><li>História</li></a>
-                    <a href="index.html#musics"><li>Músicas</li></a>
-                    <a href="index.html#curiosities"><li>Curiosidades</li></a>
+                    <a href="index.html#history">
+                        <li>História</li>
+                    </a>
+                    <a href="index.html#musics">
+                        <li>Músicas</li>
+                    </a>
+                    <a href="index.html#curiosities">
+                        <li>Curiosidades</li>
+                    </a>
+                    <a href="scores.html">
+                        <li>Pontuação Geral</li>
+                    </a>
                     <!-- <li id="sessionName"></li> -->
-                    <img style="height: 25px; cursor: pointer;" src="img/exit.png" alt="logout" onclick="limparSessao()">
+                    <img style="height: 25px; cursor: pointer;" src="img/exit.png" alt="logout"
+                        onclick="limparSessao()">
                 </ul>
             </div>
         </div>
     </div>
     <div class="quiz">
         <div class="container">
-            <span class="title">quiz cjbr</span>
+            <span class="title">quiz charlie brown jr.</span>
             <div class="content">
                 <div class="question" id="question1">
-                    <span class="title">1- qual a primeira formação da</span>
-                    <span class="title">banda charlie brown jr?</span>
+                    <h1>1- Qual a primeira formação da banda ?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -51,8 +67,7 @@
                     </div>
                 </div>
                 <div class="question" id="question2" style="display: none;">
-                    <span class="title">2- qual o primeiro álbum de estúdio</span>
-                    <span class="title">do charlie brown jr?</span>
+                    <h1>2- Qual o primeiro álbum de estúdio da banda?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -74,8 +89,7 @@
                     </div>
                 </div>
                 <div class="question" id="question3" style="display: none;">
-                    <span class="title">3- qual a música mais reproduzida do</span>
-                    <span class="title">charlie brown jr no spotify?</span>
+                    <h1>3- Qual a música mais reproduzida da banda no Spotify?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -97,8 +111,7 @@
                     </div>
                 </div>
                 <div class="question" id="question4" style="display: none;">
-                    <span class="title">4- do que o chorão trampava</span>
-                    <span class="title">antes de ficar famoso?</span>
+                    <h1>4- Do que o Chorão trampava antes de ficar famoso?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -120,8 +133,7 @@
                     </div>
                 </div>
                 <div class="question" id="question5" style="display: none;">
-                    <span class="title">5- com quantos anos champignon </span>
-                    <span class="title">começou a tocar com o chorão?</span>
+                    <h1>5- Com quantos anos Champignon começou a tocar com o Chorão?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -143,8 +155,7 @@
                     </div>
                 </div>
                 <div class="question" id="question6" style="display: none;">
-                    <span class="title">6- quantos anos tinham chorão e champignon</span>
-                    <span class="title">quando morreram, respectivamente?</span>
+                    <h1>6- Com quantos anos Chorão e Champignon morreram, respectivamente?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -166,8 +177,7 @@
                     </div>
                 </div>
                 <div class="question" id="question7" style="display: none;">
-                    <span class="title">7- quantos ouvintes mensais</span>
-                    <span class="title">charlie brown jr tem, aproximadamente?</span>
+                    <h1>7- Quantos ouvintes mensais a banda tem, aproximadamente?</h1>
                     <hr style="width: 100%; margin: 0;" color="#1E1E1E">
                     <div class="answers">
                         <div class="option">
@@ -197,16 +207,30 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
     document.getElementById('prev').style.display = 'none';
     document.getElementById('finish').style.display = 'none';
+    let idUsuarioVar = Number(sessionStorage.ID_USUARIO);
+    let nomeUsuario = sessionStorage.NOME_USUARIO;
     let next = 0;
     let prev = 0;
-    let countAnswers = 0;
-    let answers = [];
+    let points = 0;
+    let percent = 0;
+    let userCA = 0;
+    let img = '';
+    let msg = '';
+    let radios = [];
     let correctAnswers = ["Chorão, Champignon, Marcão, Thiago e Pelado", "Transpiração Contínua Prolongada", "Só os Loucos Sabem", "Corretor", "12 anos", "42, 35 anos", "4 milhões"];
+
+    Swal.fire({
+        imageUrl: 'https://25.media.tumblr.com/d26cbea896ebec5805b71d678d4f8beb/tumblr_mm8s5rchKk1rki0h8o1_500.gif',
+        imageWidth: 400,
+        title: 'Bem-vindo ao Quiz CBJR!!',
+        html: '<span class="text">Feito por: Marcelo Alcantara - 1ADS B</span>',
+    })
 
     function PrevQuestion() {
         prev--;
@@ -263,17 +287,72 @@
     }
 
     function FinishQuiz() {
-        var radios = document.getElementsByTagName('input');
-
-        for (let index = 0; index < radios.length; index++) {
-            if (radios[index].checked == true) {
-                if (radios[index].value == correctAnswers[index]) {
-                    countAnswers++
-                    console.log(countAnswers);
-                } else {
-                    console.log('Está errado')
+        radios = document.querySelectorAll("input[type='radio']:checked");
+        if (radios.length < correctAnswers.length) {
+            Swal.fire({
+                imageUrl: 'https://media.tenor.com/ew45IhWGeIEAAAAM/chor%C3%A3o-chorao.gif',
+                imageWidth: 400,
+                title: 'Responda todas as questões!',
+            });
+        } else {
+            userCA = 0;
+            for (let index = 0; index < radios.length; index++) {
+                if (correctAnswers.indexOf(radios[index].value) >= 0) {
+                    userCA++;
                 }
             }
+            points = userCA * 10;
+            percent = userCA / correctAnswers.length * 100;
+
+            if (userCA == 0 || userCA <= 3) {
+                img = 'https://media.tenor.com/ew45IhWGeIEAAAAM/chor%C3%A3o-chorao.gif';
+                msg = ` <span class="text"> 
+                            Poderia ter sido melhor <b>${nomeUsuario}</b> 😔😔, sua pontuação foi de
+                            <b>${points}</b> pontos, que equivale à <b>${percent.toFixed(2)}%</b> do Quiz
+                        </span>`;
+            } else {
+                img = 'https://25.media.tumblr.com/d26cbea896ebec5805b71d678d4f8beb/tumblr_mm8s5rchKk1rki0h8o1_500.gif';
+                msg = ` <span class="text">
+                            Parabéns <b>${nomeUsuario}</b> 🥳🥳, sua pontuação foi de
+                            <b>${points}</b> pontos, que equivale à<b> ${percent.toFixed(2)}%</b> do Quiz
+                        </span>`;
+            }
+
+            fetch("/usuarios/cadastrarPontuacao", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    idUsuarioServer: idUsuarioVar,
+                    pointsServer: points,
+                    percentServer: percent.toFixed(2)
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    Swal.fire({
+                        imageUrl: img,
+                        imageWidth: 400,
+                        title: 'Quiz Finalizado!',
+                        html: msg,
+                    }).then((result) => {
+                        setTimeout(function () {
+                            window.location = "scores.html";
+                        }, 1000);
+                    })
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
         }
     }
 </script>

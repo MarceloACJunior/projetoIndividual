@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/funcoes.js"></script>
+    <link rel="stylesheet" href="styles/scores.css">
+    <title>Login</title>
+</head>
+
+<body scroll="no" style="overflow: hidden" onload="atualizarFeed(), validarSessao()">
+    <div class="navbar">
+        <div class="container">
+            <a href="index.html"><img class="logo" src="img/cbjlogo2.png" alt="CBJR Logo"></a>
+            <div class="content">
+                <ul class="items" id="items">
+                    <a href="index.html#history">
+                        <li>História</li>
+                    </a>
+                    <a href="index.html#musics">
+                        <li>Músicas</li>
+                    </a>
+                    <a href="index.html#curiosities">
+                        <li>Curiosidades</li>
+                    </a>
+                    <a href="quiz.html">
+                        <li>Quiz</li>
+                    </a>
+                    <img style="height: 25px; cursor: pointer;" src="img/exit.png" alt="logout"
+                        onclick="limparSessao()">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="scores">
+        <div class="container">
+            <span class="title">pontuação geral</span>
+            <div class="content">
+                <table class="infos" id="infos">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Pontuação</th>
+                        <th>Percentual</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/usuarios/listarPontuacao").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var table = document.getElementById("infos");
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        var tdNome = document.createElement("td");
+                        var tdPontuacao = document.createElement("td");
+                        var tdPercent = document.createElement("td");
+                        var tableTr = document.createElement("tr");
+                        var hr = document.createElement("hr");
+
+                        tdNome.className = "text"
+                        tdPontuacao.className = "text"
+                        tdPercent.className = "text"
+
+                        tdNome.innerHTML = `${publicacao.nomeUsuario}`;
+                        tdPontuacao.innerHTML = `${publicacao.pontuacao}pts.`;
+                        tdPercent.innerHTML = `${publicacao.perPont}%`;
+
+                        tableTr.appendChild(tdNome);
+                        tableTr.appendChild(tdPontuacao);
+                        tableTr.appendChild(tdPercent);
+                        table.appendChild(tableTr);
+                    }
+
+                    // finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            // finalizarAguardar();
+        });
+    }
+
+</script>
